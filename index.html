@@ -22,6 +22,9 @@
 	<link rel="shortcut icon" href="images/favicon.ico">
 	<style>
 		/* === MAIN STYLES === */
+		html {
+			scroll-behavior: smooth;
+		}
 		/* Applying Montserrat and increasing font size for main content */
 		.main-content h1 {
 			font-family: 'Montserrat', sans-serif;
@@ -42,11 +45,16 @@
 			margin-top: 20px;
 		}
 
-		/* Styling for the "View My Resume" button */
-		.resume-button {
+		/* Styling for the action buttons */
+		.action-buttons {
+			margin-top: 25px;
+			display: flex;
+			justify-content: center;
+			gap: 15px;
+		}
+		.action-button {
 			display: inline-block;
 			padding: 12px 25px;
-			margin-top: 25px;
 			border: 2px solid #fff;
 			border-radius: 25px;
 			color: #fff;
@@ -54,10 +62,9 @@
 			font-family: 'Montserrat', sans-serif;
 			font-weight: bold;
 			transition: all 0.3s ease;
-			cursor: pointer; /* Change cursor to indicate it's clickable */
+			cursor: pointer;
 		}
-
-		.resume-button:hover {
+		.action-button:hover {
 			background-color: #fff;
 			color: #333;
 		}
@@ -106,6 +113,109 @@
 			font-size: 1.5rem; 
 			line-height: 2rem; /* Aligns it vertically with icons */
 		}
+		
+		/* === PROJECTS SECTION (NOW A MODAL) === */
+		#projects-modal .projects-container {
+			padding: 50px 20px;
+			background-color: #f8f9fa; /* Light grey background */
+			border-radius: 10px;
+		}
+		#projects-modal h2 {
+			text-align: center;
+			font-family: 'Montserrat', sans-serif;
+			font-size: 3rem;
+			font-weight: 700;
+			margin-bottom: 50px;
+			color: #333;
+		}
+		.projects-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+			gap: 30px;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+		.project-card {
+			background: #fff;
+			border-radius: 10px;
+			box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+		.project-card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+		}
+		.project-image img {
+			width: 100%;
+			height: 220px;
+			object-fit: cover;
+		}
+		.project-content {
+			padding: 25px;
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+		}
+		.project-content h3 {
+			font-family: 'Work Sans', sans-serif;
+			font-size: 1.5rem;
+			font-weight: 700;
+			color: #1e293b;
+			margin-bottom: 15px;
+		}
+		.project-content p {
+			font-family: 'Work Sans', sans-serif;
+			font-size: 1rem;
+			line-height: 1.6;
+			color: #4a5568;
+			flex-grow: 1;
+		}
+		.project-tech {
+			margin-top: 20px;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+		.project-tech span {
+			background-color: #e2e8f0;
+			color: #4a5568;
+			padding: 5px 10px;
+			border-radius: 15px;
+			font-size: 0.8rem;
+			font-weight: 600;
+		}
+		.project-links {
+			margin-top: 25px;
+			display: flex;
+			gap: 15px;
+		}
+		.project-links a {
+			text-decoration: none;
+			padding: 10px 20px;
+			border-radius: 20px;
+			font-weight: 600;
+			transition: all 0.3s ease;
+		}
+		.project-links .live-link {
+			background-color: #1e293b;
+			color: #fff;
+		}
+		.project-links .live-link:hover {
+			background-color: #4a5568;
+		}
+		.project-links .source-link {
+			background-color: transparent;
+			color: #1e293b;
+			border: 2px solid #1e293b;
+		}
+		.project-links .source-link:hover {
+			background-color: #1e293b;
+			color: #fff;
+		}
+
 
 		/* === MODAL STYLES === */
 		/* The Modal (background) */
@@ -123,7 +233,6 @@
 
 		/* Modal Content/Box - Modified for new resume */
 		.modal-content {
-			/* The new resume has its own background and padding, so we make this a simple container */
 			margin: 5% auto;
 			width: 95%; /* Use percentage for responsiveness */
 			max-width: 1000px; /* Maximum width from your design */
@@ -144,7 +253,7 @@
 			color: #fff;
 			background-color: #1a202c;
 			position: absolute;
-			top: -15px; /* Position it slightly above the content */
+			top: -15px;
 			right: -15px;
 			font-size: 24px;
 			font-weight: bold;
@@ -186,7 +295,7 @@
 </head>
 <body>
 	<div id="particles-js">
-		<div class="main-content">	
+		<div class="main-content"> 	
 		<center>
 			<figure>
 				<img src="images/profile_img.png" alt="Amith Acharya">
@@ -211,28 +320,83 @@
 				<div class="social-row">
 					<a href="https://www.instagram.com/theonewhotalks_" target="_blank" class="social-icon-link"><i class="fa-brands fa-instagram"></i></a>
 					<a href="https://t.me/amith_acharya" target="_blank" class="social-icon-link"><i class="fa-brands fa-telegram"></i></a>
-					<a href="https://twitter.com/amithacharya_" target="_blank" class="social-icon-link"><i class="fa-brands fa-x-twitter"></i></a>
+					<a href="https://twitter.com/amithacharya_" target="_blank" class="social-icon-link"><i class="fa-brands fa-x"></i></a>
 				</div>
 			</div>
 			<!-- === END REVAMPED CONTACT SECTION === -->
 
-			<!-- This button will open the modal -->
-			<a id="open-resume-btn" class="resume-button">View My Resume</a>
+			<!-- Action Buttons -->
+			<div class="action-buttons">
+				<a id="open-projects-btn" class="action-button">My Projects</a>
+				<a id="open-resume-btn" class="action-button">View My Resume</a>
+			</div>
 
-		</center>	
+		</center> 	
 		</div>
 		<!-- This footer is part of the particles-js background -->
 		<footer id="footer">
 			Amith R
 		</footer>
-	</div>	
+	</div> 	
+
+	<!-- === PROJECTS MODAL === -->
+	<div id="projects-modal" class="modal-overlay">
+		<div class="modal-content">
+			<span class="modal-close projects-close-btn">&times;</span>
+			<div class="projects-container">
+				<h2>My Projects</h2>
+				<div class="projects-grid">
+					<!-- Project Card 1 -->
+					<div class="project-card">
+						<div class="project-image">
+							<img src="https://placehold.co/600x400/334155/E2E8F0?text=Lung+Cancer+AI" alt="Lung Cancer Detection Project">
+						</div>
+						<div class="project-content">
+							<h3>Lung Cancer Detection using CNN</h3>
+							<p>Engineered a Convolutional Neural Network (CNN) to classify lung CT scan images as benign, malignant, or normal. This project formed the basis for my published research paper.</p>
+							<div class="project-tech">
+								<span>Python</span>
+								<span>TensorFlow</span>
+								<span>Pandas</span>
+								<span>NumPy</span>
+								<span>Scikit-Learn</span>
+							</div>
+							<div class="project-links">
+								<a href="#" class="live-link">Live Demo</a>
+								<a href="#" class="source-link">Source Code</a>
+							</div>
+						</div>
+					</div>
+					<!-- Project Card 2 -->
+					<div class="project-card">
+						<div class="project-image">
+							<img src="https://placehold.co/600x400/334155/E2E8F0?text=Wellness+App" alt="Wellness App Project">
+						</div>
+						<div class="project-content">
+							<h3>Wellness App for Digital Detox</h3>
+							<p>Developed a native Android app using Kotlin to help users monitor and reduce their screen time. Implemented features for usage tracking, goal setting, and a user-friendly dashboard.</p>
+							<div class="project-tech">
+								<span>Kotlin</span>
+								<span>Android Studio</span>
+								<span>XML</span>
+							</div>
+							<div class="project-links">
+								<a href="#" class="live-link">Live Demo</a>
+								<a href="#" class="source-link">Source Code</a>
+							</div>
+						</div>
+					</div>
+					<!-- Add more project cards here -->
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- === RESUME MODAL === -->
 	<div id="resume-modal" class="modal-overlay">
 		<div class="modal-content">
-			<span class="modal-close">&times;</span>
+			<span class="modal-close resume-close-btn">&times;</span>
 			
-			<!-- New Resume Body with SCALED-UP fonts -->
 			<div class="resume-container mx-auto p-8 md:p-12 bg-white rounded-lg shadow-2xl">
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
 	
@@ -258,7 +422,7 @@
 							<h3 class="section-title text-lg pt-6">Education</h3>
 							<div>
 								<h4 class="font-semibold text-gray-800 text-xl">Dayananda Sagar University</h4>
-								<p class="text-lg text-gray-600 font-medium">B.Tech, Computer Science & Eng.</p>
+								<p class="text-lg text-gray-600 font-medium">B.Tech, Computer Science & Engineering</p>
 								<p class="text-base text-gray-500">2021 – 2025</p>
 								<p class="text-base text-gray-500">CGPA: 7.5 / 10.0</p>
 							</div>
@@ -382,7 +546,6 @@
 					</main>
 				</div>
 			</div>
-			<!-- End New Resume Body -->
 		</div>
 	</div>
 	<!-- === END RESUME MODAL === -->
@@ -392,29 +555,37 @@
 
 	<!-- JavaScript for Modal Functionality -->
 	<script>
-		// Get the modal element
-		var modal = document.getElementById("resume-modal");
+		// --- Resume Modal ---
+		var resumeModal = document.getElementById("resume-modal");
+		var openResumeBtn = document.getElementById("open-resume-btn");
+		var closeResumeBtn = document.getElementsByClassName("resume-close-btn")[0];
 
-		// Get the button that opens the modal
-		var btn = document.getElementById("open-resume-btn");
-
-		// Get the <span> element that closes the modal
-		var closeBtn = document.getElementsByClassName("modal-close")[0];
-
-		// When the user clicks the button, open the modal 
-		btn.onclick = function() {
-			modal.style.display = "block";
+		openResumeBtn.onclick = function() {
+			resumeModal.style.display = "block";
+		}
+		closeResumeBtn.onclick = function() {
+			resumeModal.style.display = "none";
 		}
 
-		// When the user clicks on <span> (x), close the modal
-		closeBtn.onclick = function() {
-			modal.style.display = "none";
+		// --- Projects Modal ---
+		var projectsModal = document.getElementById("projects-modal");
+		var openProjectsBtn = document.getElementById("open-projects-btn");
+		var closeProjectsBtn = document.getElementsByClassName("projects-close-btn")[0];
+		
+		openProjectsBtn.onclick = function() {
+			projectsModal.style.display = "block";
+		}
+		closeProjectsBtn.onclick = function() {
+			projectsModal.style.display = "none";
 		}
 
-		// When the user clicks anywhere outside of the modal content, close it
+		// Close modals if user clicks outside of the content
 		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
+			if (event.target == resumeModal) {
+				resumeModal.style.display = "none";
+			}
+			if (event.target == projectsModal) {
+				projectsModal.style.display = "none";
 			}
 		}
 	</script>
