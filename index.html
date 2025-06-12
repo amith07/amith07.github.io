@@ -5,12 +5,184 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Amith Acharya</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Existing Stylesheets -->
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<!-- New Libraries for Resume -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	
+	<!-- Updated Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	
 	<link rel="shortcut icon" href="images/favicon.ico">
+	<style>
+		/* === MAIN STYLES === */
+		/* Applying Montserrat and increasing font size for main content */
+		.main-content h1 {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 4.5rem; /* Increased size */
+			font-weight: 700; /* Bolder */
+		}
+		.main-content h2 {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 1.75rem; /* Increased size */
+			font-weight: 500; /* Medium bold */
+			margin-top: 10px;
+		}
+		.main-content h3 {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 1.2rem; /* Increased size */
+			font-weight: 500; /* Medium bold */
+			line-height: 1.6;
+			margin-top: 20px;
+		}
+
+		/* Styling for the "View My Resume" button */
+		.resume-button {
+			display: inline-block;
+			padding: 12px 25px;
+			margin-top: 25px;
+			border: 2px solid #fff;
+			border-radius: 25px;
+			color: #fff;
+			text-decoration: none;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: bold;
+			transition: all 0.3s ease;
+			cursor: pointer; /* Change cursor to indicate it's clickable */
+		}
+
+		.resume-button:hover {
+			background-color: #fff;
+			color: #333;
+		}
+
+		/* === NEW CONTACT BUTTONS STYLES === */
+		.contact-section {
+			margin-top: 30px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 15px; /* Space between button rows */
+		}
+		.contact-me-btn {
+			display: inline-block;
+			background-color: #fff;
+			color: #1a202c;
+			padding: 12px 30px;
+			border-radius: 25px;
+			text-decoration: none;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 700;
+			transition: transform 0.3s ease;
+		}
+		.contact-me-btn:hover {
+			transform: scale(1.05);
+		}
+		.social-row {
+			display: flex;
+			justify-content: center;
+			gap: 25px; /* Increased gap for better spacing */
+			align-items: center;
+		}
+		.social-icon-link {
+			color: #fff;
+			font-size: 2rem;
+			transition: transform 0.3s ease;
+			text-decoration: none;
+		}
+		.social-icon-link:hover {
+			transform: scale(1.2);
+		}
+		/* New style for XDA link to make it look like an icon */
+		.xda-text-icon {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 700;
+			font-size: 1.5rem; 
+			line-height: 2rem; /* Aligns it vertically with icons */
+		}
+
+		/* === MODAL STYLES === */
+		/* The Modal (background) */
+		.modal-overlay {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1000; /* Sit on top of everything */
+			left: 0;
+			top: 0;
+			width: 100%; 
+			height: 100%;
+			overflow-y: auto; /* Enable scroll if needed for smaller screens */
+			background-color: rgba(0,0,0,0.6); /* Black background with opacity */
+		}
+
+		/* Modal Content/Box - Modified for new resume */
+		.modal-content {
+			/* The new resume has its own background and padding, so we make this a simple container */
+			margin: 5% auto;
+			width: 95%; /* Use percentage for responsiveness */
+			max-width: 1000px; /* Maximum width from your design */
+			position: relative;
+			animation: fadeIn 0.5s;
+			background-color: transparent; /* Let the inner design handle background */
+			border: none;
+			padding: 0;
+		}
+		
+		@keyframes fadeIn {
+			from {opacity: 0; transform: scale(0.95);}
+			to {opacity: 1; transform: scale(1);}
+		}
+
+		/* The Close Button - REDESIGNED */
+		.modal-close {
+			color: #fff;
+			background-color: #1a202c;
+			position: absolute;
+			top: -15px; /* Position it slightly above the content */
+			right: -15px;
+			font-size: 24px;
+			font-weight: bold;
+			z-index: 1001;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			line-height: 1;
+			border: 2px solid #fff;
+			transition: background-color 0.3s ease;
+		}
+
+		.modal-close:hover,
+		.modal-close:focus {
+			background-color: #4a5568;
+			text-decoration: none;
+			cursor: pointer;
+		}
+		
+		/* === NEW RESUME STYLES (INSIDE MODAL) === */
+		/* FIX: Use a more specific selector to override Tailwind's default font */
+		#resume-modal .resume-container {
+			font-family: 'Work Sans', sans-serif; /* Updated Font */
+		}
+		
+		.section-title {
+			border-bottom: 2px solid #e2e8f0;
+			padding-bottom: 8px;
+			margin-bottom: 16px;
+			font-weight: 600;
+			color: #1e293b;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+	</style>
 </head>
 <body>
 	<div id="particles-js">
@@ -22,27 +194,229 @@
 			<h1>Amith R</h1>
 			<h2>amith07</h2>
 			<h3>
-				22 y.o. Tech Enthusiast<br>
-				CS Engineering Student<br>
+				23 y.o. Tech Enthusiast<br>
+				Computer Science Engineer<br>
 				Still learning new stuff!<br>
 				Bengaluru, Karnataka, India
 			</h3>
-			<ul class="social">
-				<li><a href="https://www.linkedin.com/in/amith-r/" target="_blank"><i class="icon-linkedin"></i></a></li>
-				<li><a href="https://github.com/amith07" target="_blank"><i class="icon-github"></i></a></li>
-				<li><a href="https://forum.xda-developers.com/member.php?u=10601659" target="_blank">XDA</a></li>
-				<li><a href="https://twitter.com/amithacharya_" target="_blank"><i class="icon-twitter"></i></a></li>
-				<li><a href="https://www.instagram.com/amith.07" target="_blank"><i class="icon-instagram"></i></a></li>				
-				<li><a href="https://t.me/amith_acharya"><i class="fa fa-telegram"></i></a></li>
-				<li><a href="mailto:amith.r2901@gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
-			</ul>
+			
+			<!-- === REVAMPED CONTACT SECTION === -->
+			<div class="contact-section">
+				<a href="mailto:amith.r2901@gmail.com" class="contact-me-btn">Contact Me</a>
+				<div class="social-row">
+					<a href="https://github.com/amith07" target="_blank" class="social-icon-link"><i class="fa-brands fa-github"></i></a>
+					<a href="https://www.linkedin.com/in/amith-r/" target="_blank" class="social-icon-link"><i class="fa-brands fa-linkedin"></i></a>
+					<a href="https://forum.xda-developers.com/member.php?u=10601659" target="_blank" class="social-icon-link xda-text-icon">XDA</a>
+				</div>
+				<div class="social-row">
+					<a href="https://www.instagram.com/theonewhotalks_" target="_blank" class="social-icon-link"><i class="fa-brands fa-instagram"></i></a>
+					<a href="https://t.me/amith_acharya" target="_blank" class="social-icon-link"><i class="fa-brands fa-telegram"></i></a>
+					<a href="https://twitter.com/amithacharya_" target="_blank" class="social-icon-link"><i class="fa-brands fa-x-twitter"></i></a>
+				</div>
+			</div>
+			<!-- === END REVAMPED CONTACT SECTION === -->
+
+			<!-- This button will open the modal -->
+			<a id="open-resume-btn" class="resume-button">View My Resume</a>
+
 		</center>	
 		</div>
+		<!-- This footer is part of the particles-js background -->
 		<footer id="footer">
 			Amith R
 		</footer>
 	</div>	
+
+	<!-- === RESUME MODAL === -->
+	<div id="resume-modal" class="modal-overlay">
+		<div class="modal-content">
+			<span class="modal-close">&times;</span>
+			
+			<!-- New Resume Body with SCALED-UP fonts -->
+			<div class="resume-container mx-auto p-8 md:p-12 bg-white rounded-lg shadow-2xl">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+	
+					<!-- Left Column (Sidebar) -->
+					<aside class="md:col-span-1 md:border-r md:pr-8 border-gray-200">
+						
+						<!-- Contact Info -->
+						<div class="text-center mb-12">
+							<h1 class="text-6xl font-bold text-gray-900">Amith R</h1>
+							<p class="text-2xl font-semibold text-blue-600 mt-2">Computer Science Engineer</p>
+						</div>
+						
+						<div class="space-y-4">
+							<h3 class="section-title text-lg">Contact</h3>
+							<div class="space-y-3 text-lg text-gray-600 font-medium">
+								<p><i class="fas fa-envelope fa-fw mr-2 text-blue-500"></i><a href="mailto:amith.r2901@gmail.com" class="hover:underline">amith.r2901@gmail.com</a></p>
+								<p><i class="fas fa-map-marker-alt fa-fw mr-2 text-blue-500"></i>Bengaluru, Karnataka</p>
+								<p><i class="fab fa-linkedin fa-fw mr-2 text-blue-500"></i><a href="https://www.linkedin.com/in/amith-r" class="hover:underline">linkedin.com/in/amith-r</a></p>
+								<p><i class="fab fa-github fa-fw mr-2 text-blue-500"></i><a href="https://www.github.com/amith07" class="hover:underline">github.com/amith07</a></p>
+							</div>
+	
+							<!-- Education -->
+							<h3 class="section-title text-lg pt-6">Education</h3>
+							<div>
+								<h4 class="font-semibold text-gray-800 text-xl">Dayananda Sagar University</h4>
+								<p class="text-lg text-gray-600 font-medium">B.Tech, Computer Science & Eng.</p>
+								<p class="text-base text-gray-500">2021 – 2025</p>
+								<p class="text-base text-gray-500">CGPA: 7.5 / 10.0</p>
+							</div>
+	
+							<!-- Skills -->
+							<h3 class="section-title text-lg pt-6">Skills</h3>
+							<div class="text-lg space-y-3">
+								<div>
+									<h4 class="font-semibold text-gray-700">Languages</h4>
+									<p class="text-gray-600 font-medium">Python, Java, C++, Kotlin, C, SQL</p>
+								</div>
+								<div>
+									<h4 class="font-semibold text-gray-700">Machine Learning</h4>
+									<p class="text-gray-600 font-medium">TensorFlow, Scikit-Learn, Pandas, NumPy, Computer Vision</p>
+								</div>
+								<div>
+									<h4 class="font-semibold text-gray-700">Web Development</h4>
+									<p class="text-gray-600 font-medium">React.js, HTML, CSS, MySQL, MongoDB</p>
+								</div>
+								<div>
+									<h4 class="font-semibold text-gray-700">Cloud & DevOps</h4>
+									<p class="text-gray-600 font-medium">AWS, GCP, Azure, Git, Jenkins</p>
+								</div>
+							</div>
+	
+							<!-- Certifications -->
+							<h3 class="section-title text-lg pt-6">Certifications</h3>
+							<div class="text-lg space-y-2 text-gray-600 font-medium">
+							   <p>MathWorks Certified (MATLAB, Simulink)</p>
+							   <p>Google Developer Badges (Android, Kotlin)</p>
+							   <p>TensorFlow Developer</p>
+							   <p>Full Stack Development</p>
+							   <p>AWS & GCP Fundamentals</p>
+							</div>
+						</div>
+					</aside>
+	
+					<!-- Right Column (Main Content) -->
+					<main class="md:col-span-2">
+						<!-- Professional Summary -->
+						<section>
+							<h3 class="section-title text-xl">Professional Summary</h3>
+							<p class="text-lg leading-relaxed text-gray-700 font-medium">
+								A motivated and results-oriented Computer Science student with a strong foundation in Machine Learning, Full-Stack Development, and Android Application Development. Proven ability to take projects from concept to completion, demonstrated through freelance web development, a published research paper, and hands-on internship experience. Eager to apply my skills in software engineering and AI to solve real-world challenges in a dynamic technical environment.
+							</p>
+						</section>
+	
+						<!-- Professional Experience -->
+						<section class="mt-8">
+							<h3 class="section-title text-xl">Professional Experience</h3>
+							<div class="space-y-6">
+								<div>
+									<div class="flex justify-between items-baseline">
+										<h4 class="font-semibold text-xl text-gray-800">Freelance Web Developer</h4>
+										<p class="text-base font-medium text-gray-500">Present</p>
+									</div>
+									<p class="text-lg font-medium text-gray-600">Remote</p>
+									<ul class="list-disc list-outside mt-2 ml-4 text-lg text-gray-700 space-y-1 font-medium">
+										<li>Develop and deploy custom websites for small businesses, enhancing their digital presence and operational efficiency.</li>
+										<li>Build full-stack solutions including e-commerce platforms and appointment booking systems.</li>
+										<li>Manage the entire project lifecycle from client consultation and requirement gathering to deployment and maintenance.</li>
+									</ul>
+								</div>
+								<div>
+									<div class="flex justify-between items-baseline">
+										<h4 class="font-semibold text-xl text-gray-800">ML Intern</h4>
+										<p class="text-base font-medium text-gray-500">Jan 2025 – May 2025</p>
+									</div>
+									<p class="text-lg font-medium text-gray-600">Niyamatek Solutions Private Limited | Bengaluru, India</p>
+									<ul class="list-disc list-outside mt-2 ml-4 text-lg text-gray-700 space-y-1 font-medium">
+										<li>Developed a CNN using TensorFlow to classify dermatological conditions from medical imagery.</li>
+										<li>Preprocessed and augmented a large dataset of skin lesion images to improve model robustness.</li>
+										<li>Collaborated with the engineering team to evaluate model performance and fine-tune hyperparameters.</li>
+									</ul>
+								</div>
+							</div>
+						</section>
+	
+						<!-- Projects -->
+						<section class="mt-8">
+							<h3 class="section-title text-xl">Projects</h3>
+							 <div class="space-y-6">
+								<div>
+									<h4 class="font-semibold text-xl text-gray-800">Lung Cancer Detection using CNN</h4>
+									<ul class="list-disc list-outside mt-2 ml-4 text-lg text-gray-700 space-y-1 font-medium">
+										<li>Engineered a CNN in Python to classify lung CT scan images as benign, malignant, or normal.</li>
+										<li>This project formed the basis for a published research paper on its effectiveness in early cancer detection.</li>
+										<li><span class="font-semibold">Tech Used:</span> Python, TensorFlow, Pandas, NumPy, Scikit-Learn.</li>
+									</ul>
+								</div>
+								 <div>
+									<h4 class="font-semibold text-xl text-gray-800">Wellness App for Digital Detox</h4>
+									<ul class="list-disc list-outside mt-2 ml-4 text-lg text-gray-700 space-y-1 font-medium">
+									   <li>Developed a native Android app using Kotlin to help users monitor and reduce screen time.</li>
+									   <li>Implemented features for usage tracking, goal setting, and a user-friendly dashboard.</li>
+									   <li><span class="font-semibold">Tech Used:</span> Kotlin, Android Studio, XML.</li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						
+						<!-- Leadership & Content Creation -->
+						<section class="mt-8">
+							<h3 class="section-title text-xl">Leadership & Content Creation</h3>
+							  <div>
+								<h4 class="font-semibold text-xl text-gray-800">Founder & Creator, TakeTalks</h4>
+								<ul class="list-disc list-outside mt-2 ml-4 text-lg text-gray-700 space-y-1 font-medium">
+									<li>Create engaging video content for YouTube and Instagram, explaining complex topics in technology, AI, and business.</li>
+									<li>Manage all aspects of content production, demonstrating strong communication and project management skills.</li>
+								</ul>
+							</div>
+						</section>
+	
+						<!-- Publications -->
+						<section class="mt-8">
+							<h3 class="section-title text-xl">Publications</h3>
+							<div>
+								 <p class="text-lg text-gray-700 font-medium">R, Amith. (2024). <b>An Advanced Approach to Detect and Classify Lung Nodules using CT Images.</b> 1st International Conference on Machine Learning Algorithms (ICMLA 2024).</p>
+							</div>
+						</section>
+					</main>
+				</div>
+			</div>
+			<!-- End New Resume Body -->
+		</div>
+	</div>
+	<!-- === END RESUME MODAL === -->
+
 	<script src="js/particles.js"></script>
 	<script src="js/app.js"></script>
+
+	<!-- JavaScript for Modal Functionality -->
+	<script>
+		// Get the modal element
+		var modal = document.getElementById("resume-modal");
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("open-resume-btn");
+
+		// Get the <span> element that closes the modal
+		var closeBtn = document.getElementsByClassName("modal-close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		closeBtn.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal content, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
 </body>
 </html>
