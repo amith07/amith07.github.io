@@ -1,593 +1,458 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Amith Acharya</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- Existing Stylesheets -->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/style.css">
-	
-	<!-- New Libraries for Resume -->
-	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	
-	<!-- Updated Fonts -->
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-	
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<style>
-		/* === MAIN STYLES === */
-		html {
-			scroll-behavior: smooth;
-		}
-		/* Applying Montserrat and increasing font size for main content */
-		.main-content h1 {
-			font-family: 'Montserrat', sans-serif;
-			font-size: 4.5rem; /* Increased size */
-			font-weight: 700; /* Bolder */
-		}
-		.main-content h2 {
-			font-family: 'Montserrat', sans-serif;
-			font-size: 1.75rem; /* Increased size */
-			font-weight: 500; /* Medium bold */
-			margin-top: 10px;
-		}
-		.main-content h3 {
-			font-family: 'Montserrat', sans-serif;
-			font-size: 1.2rem; /* Increased size */
-			font-weight: 500; /* Medium bold */
-			line-height: 1.6;
-			margin-top: 20px;
-		}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amith Acharya</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- New Libraries for Resume -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Updated Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <style>
+        /* === MAIN STYLES === */
+        html {
+            scroll-behavior: smooth;
+            font-size: 12px;
+        }
+        .main-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+        }
+        .main-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .main-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+        .action-buttons {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .action-button {
+            display: inline-block;
+            padding: 12px 25px;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .action-button:hover {
+            background-color: #fff;
+            color: #333;
+        }
+        .contact-section {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .contact-me-btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #1a202c;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+        }
+        .contact-me-btn:hover {
+            transform: scale(1.05);
+        }
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            align-items: center;
+        }
+        .social-icon-link {
+            color: #fff;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+        .social-icon-link:hover {
+            transform: scale(1.2);
+        }
+        .xda-text-icon {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem; 
+            line-height: 2rem;
+        }
+        
+        /* === PROJECTS MODAL STYLES === */
+        #projects-modal .projects-container {
+            padding: 50px 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+        }
+        #projects-modal h2 {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        .project-image img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-content h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+        .project-content p {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4a5568;
+            flex-grow: 1;
+        }
+        .project-tech {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .project-tech span {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .project-links {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+        .project-links a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .project-links .live-link {
+            background-color: #1e293b;
+            color: #fff;
+        }
+        .project-links .live-link:hover {
+            background-color: #4a5568;
+        }
+        .project-links .source-link {
+            background-color: transparent;
+            color: #1e293b;
+            border: 2px solid #1e293b;
+        }
+        .project-links .source-link:hover {
+            background-color: #1e293b;
+            color: #fff;
+        }
 
-		/* Styling for the action buttons */
-		.action-buttons {
-			margin-top: 25px;
-			display: flex;
-			justify-content: center;
-			gap: 15px;
-		}
-		.action-button {
-			display: inline-block;
-			padding: 12px 25px;
-			border: 2px solid #fff;
-			border-radius: 25px;
-			color: #fff;
-			text-decoration: none;
-			font-family: 'Montserrat', sans-serif;
-			font-weight: bold;
-			transition: all 0.3s ease;
-			cursor: pointer;
-		}
-		.action-button:hover {
-			background-color: #fff;
-			color: #333;
-		}
-
-		/* === NEW CONTACT BUTTONS STYLES === */
-		.contact-section {
-			margin-top: 30px;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			gap: 15px; /* Space between button rows */
-		}
-		.contact-me-btn {
-			display: inline-block;
-			background-color: #fff;
-			color: #1a202c;
-			padding: 12px 30px;
-			border-radius: 25px;
-			text-decoration: none;
-			font-family: 'Montserrat', sans-serif;
-			font-weight: 700;
-			transition: transform 0.3s ease;
-		}
-		.contact-me-btn:hover {
-			transform: scale(1.05);
-		}
-		.social-row {
-			display: flex;
-			justify-content: center;
-			gap: 25px; /* Increased gap for better spacing */
-			align-items: center;
-		}
-		.social-icon-link {
-			color: #fff;
-			font-size: 2rem;
-			transition: transform 0.3s ease;
-			text-decoration: none;
-		}
-		.social-icon-link:hover {
-			transform: scale(1.2);
-		}
-		/* New style for XDA link to make it look like an icon */
-		.xda-text-icon {
-			font-family: 'Montserrat', sans-serif;
-			font-weight: 700;
-			font-size: 1.5rem; 
-			line-height: 2rem; /* Aligns it vertically with icons */
-		}
-		
-		/* === PROJECTS SECTION (NOW A MODAL) === */
-		#projects-modal .projects-container {
-			padding: 50px 20px;
-			background-color: #f8f9fa; /* Light grey background */
-			border-radius: 10px;
-		}
-		#projects-modal h2 {
-			text-align: center;
-			font-family: 'Montserrat', sans-serif;
-			font-size: 3rem;
-			font-weight: 700;
-			margin-bottom: 50px;
-			color: #333;
-		}
-		.projects-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-			gap: 30px;
-			max-width: 1200px;
-			margin: 0 auto;
-		}
-		.project-card {
-			background: #fff;
-			border-radius: 10px;
-			box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-			overflow: hidden;
-			display: flex;
-			flex-direction: column;
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-		}
-		.project-card:hover {
-			transform: translateY(-10px);
-			box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-		}
-		.project-image img {
-			width: 100%;
-			height: 220px;
-			object-fit: cover;
-		}
-		.project-content {
-			padding: 25px;
-			flex-grow: 1;
-			display: flex;
-			flex-direction: column;
-		}
-		.project-content h3 {
-			font-family: 'Work Sans', sans-serif;
-			font-size: 1.5rem;
-			font-weight: 700;
-			color: #1e293b;
-			margin-bottom: 15px;
-		}
-		.project-content p {
-			font-family: 'Work Sans', sans-serif;
-			font-size: 1rem;
-			line-height: 1.6;
-			color: #4a5568;
-			flex-grow: 1;
-		}
-		.project-tech {
-			margin-top: 20px;
-			display: flex;
-			flex-wrap: wrap;
-			gap: 10px;
-		}
-		.project-tech span {
-			background-color: #e2e8f0;
-			color: #4a5568;
-			padding: 5px 10px;
-			border-radius: 15px;
-			font-size: 0.8rem;
-			font-weight: 600;
-		}
-		.project-links {
-			margin-top: 25px;
-			display: flex;
-			gap: 15px;
-		}
-		.project-links a {
-			text-decoration: none;
-			padding: 10px 20px;
-			border-radius: 20px;
-			font-weight: 600;
-			transition: all 0.3s ease;
-		}
-		.project-links .live-link {
-			background-color: #1e293b;
-			color: #fff;
-		}
-		.project-links .live-link:hover {
-			background-color: #4a5568;
-		}
-		.project-links .source-link {
-			background-color: transparent;
-			color: #1e293b;
-			border: 2px solid #1e293b;
-		}
-		.project-links .source-link:hover {
-			background-color: #1e293b;
-			color: #fff;
-		}
-
-
-		/* === MODAL STYLES === */
-		/* The Modal (background) */
-		.modal-overlay {
-			display: none; /* Hidden by default */
-			position: fixed; /* Stay in place */
-			z-index: 1000; /* Sit on top of everything */
-			left: 0;
-			top: 0;
-			width: 100%; 
-			height: 100%;
-			overflow-y: auto; /* Enable scroll if needed for smaller screens */
-			background-color: rgba(0,0,0,0.6); /* Black background with opacity */
-		}
-
-		/* Modal Content/Box - Modified for new resume */
-		.modal-content {
-			margin: 5% auto;
-			width: 95%; /* Use percentage for responsiveness */
-			max-width: 1000px; /* Maximum width from your design */
-			position: relative;
-			animation: fadeIn 0.5s;
-			background-color: transparent; /* Let the inner design handle background */
-			border: none;
-			padding: 0;
-		}
-		
-		@keyframes fadeIn {
-			from {opacity: 0; transform: scale(0.95);}
-			to {opacity: 1; transform: scale(1);}
-		}
-
-		/* The Close Button - REDESIGNED */
-		.modal-close {
-			color: #fff;
-			background-color: #1a202c;
-			position: absolute;
-			top: -15px;
-			right: -15px;
-			font-size: 24px;
-			font-weight: bold;
-			z-index: 1001;
-			width: 40px;
-			height: 40px;
-			border-radius: 50%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			line-height: 1;
-			border: 2px solid #fff;
-			transition: background-color 0.3s ease;
-		}
-
-		.modal-close:hover,
-		.modal-close:focus {
-			background-color: #4a5568;
-			text-decoration: none;
-			cursor: pointer;
-		}
-		
-		/* === NEW RESUME STYLES (INSIDE MODAL) === */
-		/* FIX: Use a more specific selector to override Tailwind's default font */
-		#resume-modal .resume-container {
-			font-family: 'Work Sans', sans-serif; /* Updated Font */
-		}
-		
-		.section-title {
-			border-bottom: 2px solid #e2e8f0;
-			padding-bottom: 8px;
-			margin-bottom: 16px;
-			font-weight: 600;
-			color: #1e293b;
-			text-transform: uppercase;
-			letter-spacing: 0.05em;
-		}
-	</style>
+        /* === GENERIC MODAL STYLES === */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%;
+            overflow-y: auto;
+            background-color: rgba(0,0,0,0.6);
+            padding: 20px;
+        }
+        .modal-content {
+            margin: 5% auto;
+            width: 95%;
+            max-width: 1100px;
+            position: relative;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0; transform: scale(0.95);}
+            to {opacity: 1; transform: scale(1);}
+        }
+        .modal-close {
+            color: #fff;
+            background-color: #1a202c;
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            border: 2px solid #fff;
+            transition: all 0.3s ease;
+        }
+        .modal-close:hover,
+        .modal-close:focus {
+            background-color: #ef4444;
+            transform: rotate(90deg);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        /* === RESUME MODAL STYLES === */
+        #resume-modal .resume-container {
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        #resume-modal .resume-section-title {
+            color: #1e3a8a;
+            border-bottom: 2px solid #93c5fd;
+            padding-bottom: 4px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        #resume-modal .tech-tag {
+            background-color: #e0e7ff;
+            color: #3730a3;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
-	<div id="particles-js">
-		<div class="main-content"> 	
-		<center>
-			<figure>
-				<img src="images/profile_img.png" alt="Amith Acharya">
-			</figure>
-			<h1>Amith R</h1>
-			<h2>amith07</h2>
-			<h3>
-				23 y.o. Tech Enthusiast<br>
-				Computer Science Engineer<br>
-				Still learning new stuff!<br>
-				Bengaluru, Karnataka, India
-			</h3>
-			
-			<!-- === REVAMPED CONTACT SECTION === -->
-			<div class="contact-section">
-				<a href="mailto:amith.r2901@gmail.com" class="contact-me-btn">Contact Me</a>
-				<div class="social-row">
-					<a href="https://github.com/amith07" target="_blank" class="social-icon-link"><i class="fa-brands fa-github"></i></a>
-					<a href="https://www.linkedin.com/in/amith-r/" target="_blank" class="social-icon-link"><i class="fa-brands fa-linkedin"></i></a>
-					<a href="https://forum.xda-developers.com/member.php?u=10601659" target="_blank" class="social-icon-link xda-text-icon">XDA</a>
-				</div>
-				<div class="social-row">
-					<a href="https://www.instagram.com/theonewhotalks_" target="_blank" class="social-icon-link"><i class="fa-brands fa-instagram"></i></a>
-					<a href="https://t.me/amith_acharya" target="_blank" class="social-icon-link"><i class="fa-brands fa-telegram"></i></a>
-					<a href="https://twitter.com/amithacharya_" target="_blank" class="social-icon-link"><i class="fa-brands fa-x"></i></a>
-				</div>
-			</div>
-			<!-- === END REVAMPED CONTACT SECTION === -->
+    <div id="particles-js">
+        <div class="main-content">  
+            <center>
+                <figure>
+                    <img src="images/profile_img.png" alt="Amith Acharya">
+                </figure>
+                <h1>Amith R</h1>
+                <h2>amith07</h2>
+                <h3>
+                    23 y.o. Tech Enthusiast<br>
+                    Computer Science Engineer<br>
+                    Driven by Curiosity!<br>
+                    Bengaluru, Karnataka, India
+                </h3>
+                
+                <div class="contact-section">
+                    <a href="mailto:amith.r2901@gmail.com" class="contact-me-btn">Contact Me</a>
+                    <div class="social-row">
+                        <a href="https://github.com/amith07" target="_blank" class="social-icon-link"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/amith-r/" target="_blank" class="social-icon-link"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://forum.xda-developers.com/member.php?u=10601659" target="_blank" class="social-icon-link xda-text-icon">XDA</a>
+                    </div>
+                    <div class="social-row">
+                        <a href="https://www.instagram.com/theonewhotalks_" target="_blank" class="social-icon-link"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://t.me/amith_acharya" target="_blank" class="social-icon-link"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://twitter.com/amithacharya_" target="_blank" class="social-icon-link"><i class="fa-brands fa-xing"></i></a>
+                    </div>
+                </div>
 
-			<!-- Action Buttons -->
-			<div class="action-buttons">
-				<a id="open-projects-btn" class="action-button">My Projects</a>
-				<a id="open-resume-btn" class="action-button">View My Resume</a>
-			</div>
+                <div class="action-buttons">
+                    <a id="open-projects-btn" class="action-button">My Projects</a>
+                    <a id="open-resume-btn" class="action-button">View My Resume</a>
+                </div>
+            </center>   
+        </div>
+        <footer id="footer">
+            Amith R
+        </footer>
+    </div>  
 
-		</center> 	
-		</div>
-		<!-- This footer is part of the particles-js background -->
-		<footer id="footer">
-			Amith R
-		</footer>
-	</div> 	
+    <!-- === PROJECTS MODAL === -->
+    <div id="projects-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close projects-close-btn">&times;</span>
+            <div class="projects-container">
+                <h2>My Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/lungcancerai.png" alt="Lung Cancer Detection Project">
+                        </div>
+                        <div class="project-content">
+                            <h3>Lung Cancer Detection using CNN</h3>
+                            <p>Engineered a Convolutional Neural Network (CNN) to classify lung CT scan images as benign, malignant, or normal. This project formed the basis for my published research paper.</p>
+                            <div class="project-tech"><span>Python</span><span>TensorFlow</span><span>Pandas</span><span>NumPy</span><span>Scikit-Learn</span></div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/wellnessapp.png" alt="Wellness App Project">
+                        </div>
+                        <div class="project-content">
+                            <h3>Wellness App for Digital Detox</h3>
+                            <p>Developed a native Android app using Kotlin to help users monitor and reduce their screen time. Implemented features for usage tracking, goal setting, and a user-friendly dashboard.</p>
+                            <div class="project-tech"><span>Kotlin</span><span>Android Studio</span><span>XML</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<!-- === PROJECTS MODAL === -->
-	<div id="projects-modal" class="modal-overlay">
-		<div class="modal-content">
-			<span class="modal-close projects-close-btn">&times;</span>
-			<div class="projects-container">
-				<h2>My Projects</h2>
-				<div class="projects-grid">
-					<!-- Project Card 1 -->
-					<div class="project-card">
-						<div class="project-image">
-							<img src="https://placehold.co/600x400/334155/E2E8F0?text=Lung+Cancer+AI" alt="Lung Cancer Detection Project">
-						</div>
-						<div class="project-content">
-							<h3>Lung Cancer Detection using CNN</h3>
-							<p>Engineered a Convolutional Neural Network (CNN) to classify lung CT scan images as benign, malignant, or normal. This project formed the basis for my published research paper.</p>
-							<div class="project-tech">
-								<span>Python</span>
-								<span>TensorFlow</span>
-								<span>Pandas</span>
-								<span>NumPy</span>
-								<span>Scikit-Learn</span>
-							</div>
-							<div class="project-links">
-								<a href="#" class="live-link">Live Demo</a>
-								<a href="#" class="source-link">Source Code</a>
-							</div>
-						</div>
-					</div>
-					<!-- Project Card 2 -->
-					<div class="project-card">
-						<div class="project-image">
-							<img src="https://placehold.co/600x400/334155/E2E8F0?text=Wellness+App" alt="Wellness App Project">
-						</div>
-						<div class="project-content">
-							<h3>Wellness App for Digital Detox</h3>
-							<p>Developed a native Android app using Kotlin to help users monitor and reduce their screen time. Implemented features for usage tracking, goal setting, and a user-friendly dashboard.</p>
-							<div class="project-tech">
-								<span>Kotlin</span>
-								<span>Android Studio</span>
-								<span>XML</span>
-							</div>
-							<div class="project-links">
-								<a href="#" class="live-link">Live Demo</a>
-								<a href="#" class="source-link">Source Code</a>
-							</div>
-						</div>
-					</div>
-					<!-- Add more project cards here -->
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- === RESUME MODAL === -->
+    <div id="resume-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close resume-close-btn">&times;</span>
+            <div class="resume-container bg-white grid grid-cols-12 rounded-lg overflow-hidden">
+                <!-- Left Sidebar -->
+                <aside class="col-span-12 md:col-span-4 bg-slate-800 text-white p-8">
+                    <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                        <h1 class="text-5xl font-bold text-blue-300">Amith R</h1>
+                        <p class="text-lg text-slate-300 mt-2">Computer Science Engineer</p>
+                    </div>
+                    <div class="mt-10">
+                        <h2 class="text-xl font-semibold text-blue-300 uppercase tracking-wider">Contact</h2>
+                        <div class="w-16 border-b-2 border-blue-400 my-2"></div>
+                        <ul class="space-y-3 text-slate-300 mt-4 text-base">
+                            <li class="flex items-center"><i class="fas fa-envelope fa-fw w-6 text-blue-300"></i><a href="mailto:amith.r2901@gmail.com" target="_blank" class="hover:text-blue-300 transition-colors">amith.r2901@gmail.com</a></li>
+                            <li class="flex items-center"><i class="fab fa-linkedin fa-fw w-6 text-blue-300"></i><a href="https://linkedin.com/in/amith-r" target="_blank" class="hover:text-blue-300 transition-colors">linkedin.com/in/amith-r</a></li>
+                            <li class="flex items-center"><i class="fab fa-github fa-fw w-6 text-blue-300"></i><a href="https://github.com/amith07" target="_blank" class="hover:text-blue-300 transition-colors">github.com/amith07</a></li>
+                            <li class="flex items-center"><i class="fas fa-map-marker-alt fa-fw w-6 text-blue-300"></i><span>Bengaluru, Karnataka</span></li>
+                        </ul>
+                    </div>
+                    <div class="mt-10">
+                        <h2 class="text-xl font-semibold text-blue-300 uppercase tracking-wider">Education</h2>
+                        <div class="w-16 border-b-2 border-blue-400 my-2"></div>
+                        <div class="mt-4"><h3 class="text-lg font-bold text-slate-100">B.Tech, Computer Science & Engineering</h3><p class="text-base text-slate-300">Dayananda Sagar University</p><p class="text-sm text-slate-400">2021 – 2025 | CGPA: 7.42 / 10.0</p></div>
+                    </div>
+                    <div class="mt-10">
+                        <h2 class="text-xl font-semibold text-blue-300 uppercase tracking-wider">Skills</h2>
+                        <div class="w-16 border-b-2 border-blue-400 my-2"></div>
+                        <div class="mt-4 space-y-4 text-base">
+                            <div><h3 class="font-semibold text-slate-200">Languages</h3><p class="text-slate-300">Python, Java, C++, Kotlin, C, SQL</p></div>
+                            <div><h3 class="font-semibold text-slate-200">Machine Learning</h3><p class="text-slate-300">TensorFlow, Scikit-Learn, Pandas, NumPy, Computer Vision</p></div>
+                            <div><h3 class="font-semibold text-slate-200">Web Development</h3><p class="text-slate-300">React.js, HTML, CSS, MySQL, MongoDB</p></div>
+                            <div><h3 class="font-semibold text-slate-200">Cloud & DevOps</h3><p class="text-slate-300">AWS, GCP, Azure, Git, Jenkins</p></div>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <h2 class="text-xl font-semibold text-blue-300 uppercase tracking-wider">Certifications</h2>
+                        <div class="w-16 border-b-2 border-blue-400 my-2"></div>
+                        <ul class="list-disc list-inside mt-4 space-y-2 text-base text-slate-300">
+                            <li>MathWorks (MATLAB, Simulink)</li><li>Google Developer (Android, Kotlin)</li><li>TensorFlow Developer</li><li>Full Stack Development</li><li>AWS & GCP Fundamentals</li>
+                        </ul>
+                    </div>
+                </aside>
+                <main class="col-span-12 md:col-span-8 p-8 bg-white">
+                    <section><h2 class="resume-section-title text-2xl mb-4">Professional Summary</h2><p class="text-base leading-relaxed text-slate-700">A motivated and results-oriented Computer Science student with a strong foundation in Machine Learning, Full-Stack Development, and Android Application Development. Proven ability to take projects from concept to completion, demonstrated through freelance web development, a published research paper, and hands-on internship experience. Eager to apply my skills in software engineering and AI to solve real-world challenges in a dynamic technical environment.</p></section>
+                    <section class="mt-8"><h2 class="resume-section-title text-2xl mb-4">Professional Experience</h2><div class="space-y-6"><article><div class="flex justify-between items-baseline"><h3 class="text-xl font-semibold text-slate-800">Freelance Web Developer</h3><p class="text-sm font-medium text-slate-500">Present</p></div><p class="text-base text-slate-600 italic">Remote</p><ul class="list-disc list-inside mt-2 text-base text-slate-700 space-y-1 leading-relaxed"><li>Develop and deploy custom websites for small businesses, enhancing their digital presence and operational efficiency.</li><li>Build full-stack solutions including e-commerce platforms and appointment booking systems.</li></ul></article><article><div class="flex justify-between items-baseline"><h3 class="text-xl font-semibold text-slate-800">ML Intern</h3><p class="text-sm font-medium text-slate-500">Jan 2025 – May 2025</p></div><p class="text-base text-slate-600 italic">Niyamatek Solutions Private Limited | Bengaluru, India</p><ul class="list-disc list-inside mt-2 text-base text-slate-700 space-y-1 leading-relaxed"><li>Developed a CNN using TensorFlow to classify dermatological conditions from medical imagery.</li><li>Preprocessed and augmented a large dataset of skin lesion images to improve model robustness.</li></ul></article></div></section>
+                    <section class="mt-8"><h2 class="resume-section-title text-2xl mb-4">Projects</h2><div class="space-y-6"><article><h3 class="text-xl font-semibold text-slate-800">Lung Cancer Detection using CNN</h3><p class="mt-1 text-base text-slate-700">Engineered a CNN in Python to classify lung CT scan images as benign, malignant, or normal. This project formed the basis for a published research paper on its effectiveness in early cancer detection.</p><div class="mt-2 flex flex-wrap gap-2"><span class="tech-tag">Python</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">Pandas</span><span class="tech-tag">Scikit-Learn</span></div></article><article><h3 class="text-xl font-semibold text-slate-800">Wellness App for Digital Detox</h3><p class="mt-1 text-base text-slate-700">Developed a native Android app using Kotlin to help users monitor and reduce screen time. Implemented features for usage tracking, goal setting, and a user-friendly dashboard.</p><div class="mt-2 flex flex-wrap gap-2"><span class="tech-tag">Kotlin</span><span class="tech-tag">Android Studio</span><span class="tech-tag">XML</span></div></article></div></section>
+                    <section class="mt-8"><h2 class="resume-section-title text-2xl mb-4">Leadership & Content Creation</h2><article><h3 class="text-xl font-semibold text-slate-800">Founder & Creator, TakeTalks</h3><p class="mt-1 text-base text-slate-700">Create engaging video content for YouTube and Instagram, explaining complex topics in technology, AI, and business. Manage all aspects of content production, demonstrating strong communication and project management skills.</p><div class="mt-2 flex flex-wrap gap-2"><span class="tech-tag">Content Strategy</span><span class="tech-tag">Scriptwriting</span><span class="tech-tag">Video Production</span><span class="tech-tag">Post-Production & Editing</span></div></article></section>
+                    <section class="mt-8"><h2 class="resume-section-title text-2xl mb-4">Publications</h2><article><p class="text-base text-slate-700">R, Amith. (2024). <em>An Advanced Approach to Detect and Classify Lung Nodules using CT Images.</em> 1st International Conference on Machine Learning Algorithms (ICMLA 2024).</p></article></section>
+                </main>
+            </div>
+        </div>
+    </div>
+    <!-- === END RESUME MODAL === -->
 
-	<!-- === RESUME MODAL === -->
-	<div id="resume-modal" class="modal-overlay">
-		<div class="modal-content">
-			<span class="modal-close resume-close-btn">&times;</span>
-			
-			<div class="resume-container mx-auto p-8 md:p-12 bg-white rounded-lg shadow-2xl">
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-	
-					<!-- Left Column (Sidebar) -->
-					<aside class="md:col-span-1 md:border-r md:pr-8 border-gray-200">
-						
-						<!-- Contact Info -->
-						<div class="text-center mb-12">
-							<h1 class="text-6xl font-bold text-gray-900">Amith R</h1>
-							<p class="text-2xl font-semibold text-blue-600 mt-2">Computer Science Engineer</p>
-						</div>
-						
-						<div class="space-y-4">
-							<h3 class="section-title text-lg">Contact</h3>
-							<div class="space-y-3 text-lg text-gray-600 font-medium">
-								<p><i class="fas fa-envelope fa-fw mr-2 text-blue-500"></i><a href="mailto:amith.r2901@gmail.com" class="hover:underline">amith.r2901@gmail.com</a></p>
-								<p><i class="fas fa-map-marker-alt fa-fw mr-2 text-blue-500"></i>Bengaluru, Karnataka</p>
-								<p><i class="fab fa-linkedin fa-fw mr-2 text-blue-500"></i><a href="https://www.linkedin.com/in/amith-r" class="hover:underline">linkedin.com/in/amith-r</a></p>
-								<p><i class="fab fa-github fa-fw mr-2 text-blue-500"></i><a href="https://www.github.com/amith07" class="hover:underline">github.com/amith07</a></p>
-							</div>
-	
-							<!-- Education -->
-							<h3 class="section-title text-lg pt-6">Education</h3>
-							<div>
-								<h4 class="font-semibold text-gray-800 text-xl">Dayananda Sagar University</h4>
-								<p class="text-lg text-gray-600 font-medium">B.Tech, Computer Science & Engineering</p>
-								<p class="text-base text-gray-500">2021 – 2025</p>
-								<p class="text-base text-gray-500">CGPA: 7.5 / 10.0</p>
-							</div>
-	
-							<!-- Skills -->
-							<h3 class="section-title text-lg pt-6">Skills</h3>
-							<div class="text-lg space-y-3">
-								<div>
-									<h4 class="font-semibold text-gray-700">Languages</h4>
-									<p class="text-gray-600 font-medium">Python, Java, C++, Kotlin, C, SQL</p>
-								</div>
-								<div>
-									<h4 class="font-semibold text-gray-700">Machine Learning</h4>
-									<p class="text-gray-600 font-medium">TensorFlow, Scikit-Learn, Pandas, NumPy, Computer Vision</p>
-								</div>
-								<div>
-									<h4 class="font-semibold text-gray-700">Web Development</h4>
-									<p class="text-gray-600 font-medium">React.js, HTML, CSS, MySQL, MongoDB</p>
-								</div>
-								<div>
-									<h4 class="font-semibold text-gray-700">Cloud & DevOps</h4>
-									<p class="text-gray-600 font-medium">AWS, GCP, Azure, Git, Jenkins</p>
-								</div>
-							</div>
-	
-							<!-- Certifications -->
-							<h3 class="section-title text-lg pt-6">Certifications</h3>
-							<div class="text-lg space-y-2 text-gray-600 font-medium">
-							   <p>MathWorks Certified (MATLAB, Simulink)</p>
-							   <p>Google Developer Badges (Android, Kotlin)</p>
-							   <p>TensorFlow Developer</p>
-							   <p>Full Stack Development</p>
-							   <p>AWS & GCP Fundamentals</p>
-							</div>
-						</div>
-					</aside>
-	
-					<!-- Right Column (Main Content) -->
-					<main class="md:col-span-2">
-						<!-- Professional Summary -->
-						<section>
-							<h3 class="section-title text-xl">Professional Summary</h3>
-							<p class="text-lg leading-relaxed text-gray-700 font-medium">
-								A motivated and results-oriented Computer Science student with a strong foundation in Machine Learning, Full-Stack Development, and Android Application Development. Proven ability to take projects from concept to completion, demonstrated through freelance web development, a published research paper, and hands-on internship experience. Eager to apply my skills in software engineering and AI to solve real-world challenges in a dynamic technical environment.
-							</p>
-						</section>
-	
-						<!-- Professional Experience -->
-						<section class="mt-8">
-							<h3 class="section-title text-xl">Professional Experience</h3>
-							<div class="space-y-6">
-								<div>
-									<div class="flex justify-between items-baseline">
-										<h4 class="font-semibold text-xl text-gray-800">Freelance Web Developer</h4>
-										<p class="text-base font-medium text-gray-500">Present</p>
-									</div>
-									<p class="text-lg font-medium text-gray-600">Remote</p>
-									<ul class="list-disc list-outside mt-2 ml-4 text-lg text-gray-700 space-y-1 font-medium">
-										<li>Develop and deploy custom websites for small businesses, enhancing their digital presence and operational efficiency.</li>
-										<li>Build full-stack solutions including e-commerce platforms and appointment booking systems.</li>
-										<li>Manage the entire project lifecycle from client consultation and requirement gathering to deployment and maintenance.</li>
-									</ul>
-								</div>
-								<div>
-									<div class="flex justify-between items-baseline">
-										<h4 class="font-semibold text-xl text-gray-800">ML Intern</h4>
-										<p class="text-base font-medium text-gray-500">Jan 2025 – May 2025</p>
-									</div>
-									<p class="text-lg font-medium text-gray-600">Niyamatek Solutions Private Limited | Bengaluru, India</p>
-									<ul class="list-disc list-outside mt-2 ml-4 text-lg text-gray-700 space-y-1 font-medium">
-										<li>Developed a CNN using TensorFlow to classify dermatological conditions from medical imagery.</li>
-										<li>Preprocessed and augmented a large dataset of skin lesion images to improve model robustness.</li>
-										<li>Collaborated with the engineering team to evaluate model performance and fine-tune hyperparameters.</li>
-									</ul>
-								</div>
-							</div>
-						</section>
-	
-						<!-- Projects -->
-						<section class="mt-8">
-							<h3 class="section-title text-xl">Projects</h3>
-							 <div class="space-y-6">
-								<div>
-									<h4 class="font-semibold text-xl text-gray-800">Lung Cancer Detection using CNN</h4>
-									<ul class="list-disc list-outside mt-2 ml-4 text-lg text-gray-700 space-y-1 font-medium">
-										<li>Engineered a CNN in Python to classify lung CT scan images as benign, malignant, or normal.</li>
-										<li>This project formed the basis for a published research paper on its effectiveness in early cancer detection.</li>
-										<li><span class="font-semibold">Tech Used:</span> Python, TensorFlow, Pandas, NumPy, Scikit-Learn.</li>
-									</ul>
-								</div>
-								 <div>
-									<h4 class="font-semibold text-xl text-gray-800">Wellness App for Digital Detox</h4>
-									<ul class="list-disc list-outside mt-2 ml-4 text-lg text-gray-700 space-y-1 font-medium">
-									   <li>Developed a native Android app using Kotlin to help users monitor and reduce screen time.</li>
-									   <li>Implemented features for usage tracking, goal setting, and a user-friendly dashboard.</li>
-									   <li><span class="font-semibold">Tech Used:</span> Kotlin, Android Studio, XML.</li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						
-						<!-- Leadership & Content Creation -->
-						<section class="mt-8">
-							<h3 class="section-title text-xl">Leadership & Content Creation</h3>
-							  <div>
-								<h4 class="font-semibold text-xl text-gray-800">Founder & Creator, TakeTalks</h4>
-								<ul class="list-disc list-outside mt-2 ml-4 text-lg text-gray-700 space-y-1 font-medium">
-									<li>Create engaging video content for YouTube and Instagram, explaining complex topics in technology, AI, and business.</li>
-									<li>Manage all aspects of content production, demonstrating strong communication and project management skills.</li>
-								</ul>
-							</div>
-						</section>
-	
-						<!-- Publications -->
-						<section class="mt-8">
-							<h3 class="section-title text-xl">Publications</h3>
-							<div>
-								 <p class="text-lg text-gray-700 font-medium">R, Amith. (2024). <b>An Advanced Approach to Detect and Classify Lung Nodules using CT Images.</b> 1st International Conference on Machine Learning Algorithms (ICMLA 2024).</p>
-							</div>
-						</section>
-					</main>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- === END RESUME MODAL === -->
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
 
-	<script src="js/particles.js"></script>
-	<script src="js/app.js"></script>
+    <!-- JavaScript for Modal Functionality -->
+    <script>
+        // --- Resume Modal ---
+        var resumeModal = document.getElementById("resume-modal");
+        var openResumeBtn = document.getElementById("open-resume-btn");
+        var closeResumeBtn = resumeModal.querySelector(".resume-close-btn");
 
-	<!-- JavaScript for Modal Functionality -->
-	<script>
-		// --- Resume Modal ---
-		var resumeModal = document.getElementById("resume-modal");
-		var openResumeBtn = document.getElementById("open-resume-btn");
-		var closeResumeBtn = document.getElementsByClassName("resume-close-btn")[0];
+        openResumeBtn.onclick = function() {
+            resumeModal.style.display = "block";
+        }
+        closeResumeBtn.onclick = function() {
+            resumeModal.style.display = "none";
+        }
 
-		openResumeBtn.onclick = function() {
-			resumeModal.style.display = "block";
-		}
-		closeResumeBtn.onclick = function() {
-			resumeModal.style.display = "none";
-		}
+        // --- Projects Modal ---
+        var projectsModal = document.getElementById("projects-modal");
+        var openProjectsBtn = document.getElementById("open-projects-btn");
+        var closeProjectsBtn = projectsModal.querySelector(".projects-close-btn");
+        
+        openProjectsBtn.onclick = function() {
+            projectsModal.style.display = "block";
+        }
+        closeProjectsBtn.onclick = function() {
+            projectsModal.style.display = "none";
+        }
 
-		// --- Projects Modal ---
-		var projectsModal = document.getElementById("projects-modal");
-		var openProjectsBtn = document.getElementById("open-projects-btn");
-		var closeProjectsBtn = document.getElementsByClassName("projects-close-btn")[0];
-		
-		openProjectsBtn.onclick = function() {
-			projectsModal.style.display = "block";
-		}
-		closeProjectsBtn.onclick = function() {
-			projectsModal.style.display = "none";
-		}
-
-		// Close modals if user clicks outside of the content
-		window.onclick = function(event) {
-			if (event.target == resumeModal) {
-				resumeModal.style.display = "none";
-			}
-			if (event.target == projectsModal) {
-				projectsModal.style.display = "none";
-			}
-		}
-	</script>
+        // Close modals if user clicks outside of the content
+        window.onclick = function(event) {
+            if (event.target == resumeModal) {
+                resumeModal.style.display = "none";
+            }
+            if (event.target == projectsModal) {
+                projectsModal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
